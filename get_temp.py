@@ -1,5 +1,6 @@
 from sense_hat import SenseHat
 import os
+import time
 
 sense = SenseHat()
 
@@ -14,7 +15,7 @@ def get_corrected_temp():
     temp = sense.get_temperature()
     adjustment = (cpu_temp - temp) / 1.5
     corrected_temp = temp - adjustment 
-    return [str(corrected_temp), ' '+str(temp-7)+'\n'] # assume tmp-7 isabout the correct tmp
+    return [str(int(time.time()) ) + ' ' + str(corrected_temp), ' '+str(temp-7)+'\n'] # assume tmp-7 isabout the correct tmp
 
 with open("/home/pi/git/cellar_tmp/meas.txt", "a" ) as file: 
     file.writelines(get_corrected_temp())
