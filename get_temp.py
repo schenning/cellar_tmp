@@ -16,7 +16,7 @@ def get_corrected_temp():
     corrected_temp = temp - adjustment 
     return [str(corrected_temp), ' '+str(temp-7)+'\n'] # assume tmp-7 isabout the correct tmp
 
-with open("meas.txt", "a" ) as file: 
+with open("/home/pi/git/cellar_tmp/meas.txt", "a" ) as file: 
     file.writelines(get_corrected_temp())
 
 
